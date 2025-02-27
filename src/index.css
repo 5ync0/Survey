@@ -1,0 +1,33 @@
+:root {
+  --color-darkest: #253237;
+  --color-dark: #5C6B73;
+  --color-medium: #9DB4C0;
+  --color-light: #C2DFE3;
+  --color-lightest: #E0FBFC;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to bottom, var(--color-lightest), #D0ECEF);
+  color: var(--color-darkest);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  background-color: var(--color-medium);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-dark);
+}
