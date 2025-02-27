@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateFormData } from '../redux/actions';
-import { Radio, RadioGroup, FormControlLabel, TextField, FormControl, FormLabel, Select, MenuItem, Box, Button, Typography, Paper } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFormData } from '../redux/actions'
+import { Radio, RadioGroup, FormControlLabel, TextField, FormControl, FormLabel, Select, MenuItem, Box, Button, Typography, Paper } from '@mui/material'
 
 const Section2 = ({ onNext, handleBack }) => {
-  const dispatch = useDispatch();
-  const formData = useSelector((state) => state.formData);
-  const [localData, setLocalData] = useState(formData);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const dispatch = useDispatch()
+  const formData = useSelector((state) => state.formData)
+  const [localData, setLocalData] = useState(formData)
+  const [isFormValid, setIsFormValid] = useState(false)
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setLocalData({ ...localData, [name]: value });
-  };
+    const { name, value } = event.target
+    setLocalData({ ...localData, [name]: value })
+  }
 
   const handleNextSection = () => {
-    dispatch(updateFormData(localData));
-    onNext(); // Use the onNext prop
-  };
+    dispatch(updateFormData(localData))
+    onNext()
+  }
 
   const validateForm = () => {
     const requiredFields = [
@@ -25,19 +25,19 @@ const Section2 = ({ onNext, handleBack }) => {
       'mostUsedSocialPlatform',
       'socialMediaCheckFrequency',
       'socialMediaImpact',
-    ];
+    ]
 
     for (const field of requiredFields) {
       if (!localData[field]) {
-        return false;
+        return false
       }
     }
-    return true;
-  };
+    return true
+  }
 
   useEffect(() => {
-    setIsFormValid(validateForm());
-  }, [localData]);
+    setIsFormValid(validateForm())
+  }, [localData])
 
   return (
     <Paper elevation={1} sx={{ padding: 2, backgroundColor: 'var(--color-light)', borderRadius: 6, marginBottom: '10px' }}>
@@ -127,7 +127,7 @@ const Section2 = ({ onNext, handleBack }) => {
         </Box>
       </Box>
     </Paper>
-  );
-};
+  )
+}
 
-export default Section2;
+export default Section2

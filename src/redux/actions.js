@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { configureStore, createSlice } from '@reduxjs/toolkit'
 
 const formDataSlice = createSlice({
   name: 'formData',
@@ -23,7 +23,7 @@ const formDataSlice = createSlice({
   },
   reducers: {
     updateFormData: (state, action) => {
-      return { ...state, ...action.payload };
+      return { ...state, ...action.payload }
     },
     resetFormData: (state) => {
       return {
@@ -44,17 +44,17 @@ const formDataSlice = createSlice({
         emergingTechInterest: 5,
         futureTechImpact: '',
         additionalThoughts: '',
-      };
+      }
     },
   },
-});
+})
 
-export const { updateFormData, resetFormData } = formDataSlice.actions; // Single export
+export const { updateFormData, resetFormData } = formDataSlice.actions
 
 const store = configureStore({
   reducer: {
     formData: formDataSlice.reducer,
   },
-});
+})
 
-export default store;
+export default store

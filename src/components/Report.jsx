@@ -1,9 +1,9 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { Box, Button, Typography, Paper } from '@mui/material';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Box, Button, Typography, Paper } from '@mui/material'
 
 const Report = ({ handleBack }) => {
-  const formData = useSelector((state) => state.formData);
+  const formData = useSelector((state) => state.formData)
 
   return (
 
@@ -159,7 +159,7 @@ const Report = ({ handleBack }) => {
         </Box>
       </Box>
     </Paper>
-  );
-};
+  )
+}
 
-export default Report;
+export default Report

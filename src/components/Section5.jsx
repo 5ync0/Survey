@@ -1,50 +1,50 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateFormData } from '../redux/actions';
-import { TextField, FormControl, FormLabel, Rating, Box, Button, Typography, Paper } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFormData } from '../redux/actions'
+import { TextField, FormControl, FormLabel, Rating, Box, Button, Typography, Paper } from '@mui/material'
 
 const Section5 = ({ onNext, handleBack, validateGlobalForm }) => {
-  const dispatch = useDispatch();
-  const formData = useSelector((state) => state.formData);
-  const [localData, setLocalData] = useState(formData);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const dispatch = useDispatch()
+  const formData = useSelector((state) => state.formData)
+  const [localData, setLocalData] = useState(formData)
+  const [isFormValid, setIsFormValid] = useState(false)
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setLocalData({ ...localData, [name]: value });
-  };
+    const { name, value } = event.target
+    setLocalData({ ...localData, [name]: value })
+  }
 
   const handleRatingChange = (event, newValue) => {
-    setLocalData({ ...localData, emergingTechInterest: newValue });
-  };
+    setLocalData({ ...localData, emergingTechInterest: newValue })
+  }
 
   const handleNextSection = () => {
-    dispatch(updateFormData(localData));
+    dispatch(updateFormData(localData))
     if (validateGlobalForm()) {
-      onNext();
+      onNext()
     }
     else {
-      console.log("Global form is invalid. Cannot proceed.");
+      console.log("Global form is invalid. Cannot proceed.")
     }
-  };
+  }
 
   const validateForm = () => {
     const requiredFields = [
       'emergingTechInterest',
       'futureTechImpact',
-    ];
+    ]
 
     for (const field of requiredFields) {
       if (!localData[field]) {
-        return false;
+        return false
       }
     }
-    return true;
-  };
+    return true
+  }
 
   useEffect(() => {
-    setIsFormValid(validateForm());
-  }, [localData]);
+    setIsFormValid(validateForm())
+  }, [localData])
 
   return (
     <Paper elevation={1} sx={{ padding: 2, backgroundColor: 'var(--color-light)', borderRadius: 6, marginBottom: '10px' }}>
@@ -81,7 +81,7 @@ const Section5 = ({ onNext, handleBack, validateGlobalForm }) => {
         </Box>
       </Box>
     </Paper>
-  );
-};
+  )
+}
 
-export default Section5;
+export default Section5

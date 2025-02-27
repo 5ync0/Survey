@@ -1,57 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateFormData } from '../redux/actions';
-import { Radio, RadioGroup, FormControlLabel, Checkbox, TextField, FormControl, FormLabel, FormGroup, Rating, Box, Button, Typography, Paper } from '@mui/material';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFormData } from '../redux/actions'
+import { Radio, RadioGroup, FormControlLabel, Checkbox, TextField, FormControl, FormLabel, FormGroup, Rating, Box, Button, Typography, Paper } from '@mui/material'
 
 const Section4 = ({ onNext, handleBack }) => {
-  const dispatch = useDispatch();
-  const formData = useSelector((state) => state.formData);
-  const [localData, setLocalData] = useState(formData);
-  const [isFormValid, setIsFormValid] = useState(false);
+  const dispatch = useDispatch()
+  const formData = useSelector((state) => state.formData)
+  const [localData, setLocalData] = useState(formData)
+  const [isFormValid, setIsFormValid] = useState(false)
 
   const handleInputChange = (event) => {
-    const { name, value, type, checked } = event.target;
-    let newValue = type === 'checkbox' ? checked : value;
+    const { name, value, type, checked } = event.target
+    let newValue = type === 'checkbox' ? checked : value
 
     if (type === 'checkbox') {
       if (checked) {
-        newValue = [...(localData[name] || []), value];
+        newValue = [...(localData[name] || []), value]
       }
       else {
-        newValue = (localData[name] || []).filter((item) => item !== value);
+        newValue = (localData[name] || []).filter((item) => item !== value)
       }
     }
-    setLocalData({ ...localData, [name]: newValue });
-  };
+    setLocalData({ ...localData, [name]: newValue })
+  }
 
   const handleRatingChange = (event, newValue) => {
-    setLocalData({ ...localData, privacyConcern: newValue });
-  };
+    setLocalData({ ...localData, privacyConcern: newValue })
+  }
 
   const handleNextSection = () => {
-    dispatch(updateFormData(localData));
-    onNext();
-  };
+    dispatch(updateFormData(localData))
+    onNext()
+  }
 
   const validateForm = () => {
     const requiredFields = [
       'privacyConcern',
       'securityMeasures',
-    ];
+    ]
 
     for (const field of requiredFields) {
       if (!localData[field] || (Array.isArray(localData[field]) && localData[field].length === 0)) {
-        return false;
+        return false
       }
     }
-    if (localData.securityBreach.experienced === "true" && !localData.securityBreach.explanation) return false;
+    if (localData.securityBreach.experienced === "true" && !localData.securityBreach.explanation) return false
 
-    return true;
-  };
+    return true
+  }
 
   useEffect(() => {
-    setIsFormValid(validateForm());
-  }, [localData]);
+    setIsFormValid(validateForm())
+  }, [localData])
 
   return (
     <Paper elevation={1} sx={{ padding: 2, backgroundColor: 'var(--color-light)', borderRadius: 6, marginBottom: '10px' }}>
@@ -121,7 +121,7 @@ const Section4 = ({ onNext, handleBack }) => {
         </Box>
       </Box>
     </Paper>
-  );
-};
+  )
+}
 
-export default Section4;
+export default Section4

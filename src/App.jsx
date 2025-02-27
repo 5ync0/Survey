@@ -1,8 +1,8 @@
-import React from 'react';
-import StepperComponent from './components/StepperComponent';
-import { Provider } from 'react-redux';
-import store from './redux/actions';
-import { CssBaseline, Container } from '@mui/material';
+import React from 'react'
+import StepperComponent from './components/StepperComponent'
+import { Provider } from 'react-redux'
+import store from './redux/actions'
+import { CssBaseline, Container } from '@mui/material'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <StepperComponent />
       </Container>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App
