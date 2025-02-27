@@ -3,7 +3,6 @@ import StepperComponent from './components/StepperComponent';
 import { Provider } from 'react-redux';
 import store from './redux/actions';
 import { CssBaseline, Container } from '@mui/material';
-import ReactDOM from 'react-dom/client';
 
 function App() {
   return (
