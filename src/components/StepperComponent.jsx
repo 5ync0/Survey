@@ -109,7 +109,7 @@ const StepperComponent = () => {
         <Typography variant="body1">
 
           {getStepContent(activeStep)}
-          
+
         </Typography>
       </Box>
     </Paper>
